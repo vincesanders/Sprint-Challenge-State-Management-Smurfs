@@ -15,7 +15,7 @@ export default () => {
         <div>
             <h4 className='error-message'>{error}</h4>
             {smurfs && smurfs.map(smurf => {
-                return <SmurfCard smurf={smurf} />
+                return <SmurfCard key={smurf.id} smurf={smurf} />
             })}
         </div>
     );

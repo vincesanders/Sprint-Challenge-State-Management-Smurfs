@@ -2,7 +2,9 @@ import {
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
     FETCH_DATA_FAILURE,
-    SEND_DATA_START
+    SEND_DATA_START,
+    SEND_DATA_SUCCESS,
+    SEND_DATA_FAILURE
   } from "../actions";
 
 const initialState = {
@@ -38,6 +40,19 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isSending: true
+            }
+        case SEND_DATA_SUCCESS:
+            return {
+                ...state,
+                isSending: false,
+                smurfs: action.payload,
+                error: ''
+            }
+        case SEND_DATA_FAILURE:
+            return {
+                ...state,
+                isSending: false,
+                error: action.payload
             }
         default:
             return state;
