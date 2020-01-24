@@ -1,9 +1,11 @@
 import {
-    FETCH_DATA_START
+    FETCH_DATA_START,
+    SEND_DATA_START
   } from "../actions";
 
 const initialState = {
-    isLoading: false
+    isLoading: false,
+    isSending: false
 }
 
 export const reducer = (state = initialState, action) => {
@@ -12,6 +14,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true
+            }
+        case SEND_DATA_START:
+            return {
+                ...state,
+                isSending: true
             }
         default:
             return state;
