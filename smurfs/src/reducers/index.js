@@ -4,6 +4,7 @@ import {
   } from "../actions";
 
 const initialState = {
+    lastAddedSmurfID: 0,
     isLoading: false,
     isSending: false
 }

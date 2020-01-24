@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendData } from '../actions';
 
 export default () => {
+    const sendNewSmurf = useDispatch();
+    const usedID = useSelector(state => state.lastAddedSmurfID);
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
     const [height, setHeight] = useState(0);
@@ -16,7 +20,14 @@ export default () => {
     }
 
     const addNewSmurf = e => {
-        console.log('I was clicked!');
+        e.preventDefault();
+        let smurtObject = {
+            name: name,
+            age: age,
+            height: height + 'cm',
+            id: usedID + 1
+        }
+        return sendNewSmurf(sendData(smurtObject));
     }
 
     return (
