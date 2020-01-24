@@ -25,7 +25,7 @@ export const fetchData = () => dispatch => {
 export const sendData = smurf => dispatch => {
     dispatch({ type: SEND_DATA_START });
     axios
-    .post('http://localhost:3333/smurfs', {name: 'yo'})
+    .post('http://localhost:3333/smurfs', smurf)
     .then(res => {
         //res.data is the new array of smurfs
         console.log(res.data)
@@ -49,6 +49,7 @@ export const deleteSmurf = id => dispatch => {
         })
 }
 
-export const deleteSmurf = id => dispatch => {
-    
+export const editSmurf = newSmurfInfo=> dispatch => {
+    axios
+    .put(`http://localhost:3333/smurfs/${newSmurfInfo.id}`, {name: 'yo'})
 }
