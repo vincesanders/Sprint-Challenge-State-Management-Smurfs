@@ -48,3 +48,7 @@ export const deleteSmurf = id => dispatch => {
             dispatch({ type: DELETE_SMURF_FAILURE, payload: err.message});
         })
 }
+
+export const deleteSmurf = id => dispatch => {
+    
+}
