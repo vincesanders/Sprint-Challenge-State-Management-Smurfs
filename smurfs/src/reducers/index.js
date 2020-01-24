@@ -1,6 +1,7 @@
 import {
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
+    FETCH_DATA_FAILURE,
     SEND_DATA_START
   } from "../actions";
 
@@ -17,13 +18,21 @@ export const reducer = (state = initialState, action) => {
         case FETCH_DATA_START:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                error: ''
             }
         case FETCH_DATA_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                smurfs: action.payload
+                smurfs: action.payload,
+                error: ''
+            }
+        case FETCH_DATA_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
             }
         case SEND_DATA_START:
             return {

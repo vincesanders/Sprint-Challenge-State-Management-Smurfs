@@ -5,7 +5,7 @@ import SmurfCard from './SmurfCard';
 
 export default () => {
     const getSmurfs = useDispatch();
-    const smurfs = useSelector(state => state.smurfs);
+    const [smurfs, error] = useSelector(state => [state.smurfs, state.error]);
 
     //get smurfs on load
     useEffect(() => {
@@ -13,6 +13,7 @@ export default () => {
     }, [])
     return(
         <div>
+            <h4 className='error-message'>{error}</h4>
             {smurfs && smurfs.map(smurf => {
                 return <SmurfCard smurf={smurf} />
             })}
