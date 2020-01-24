@@ -6,6 +6,7 @@ export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 export const SEND_DATA_START = "SEND_DATA_START";
 export const SEND_DATA_SUCCESS = "SEND_DATA_SUCCESS";
 export const SEND_DATA_FAILURE = "SEND_DATA_FAILURE";
+export const DELETE_SMURF_SUCCESS = "DELETE_SMURF_SUCCESS";
 
 export const fetchData = () => dispatch => {
     dispatch({ type: FETCH_DATA_START });
@@ -32,4 +33,16 @@ export const sendData = smurf => dispatch => {
     .catch(err => {
         dispatch({ type: SEND_DATA_FAILURE, payload: err.message});
     });
+}
+
+export const deleteSmurf = id => dispatch => {
+    axios
+        .delete(`http://localhost:3333/smurfs/${id}`)
+        .then(res => {
+            //res.data is the new array of smurfs
+            dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data});
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }

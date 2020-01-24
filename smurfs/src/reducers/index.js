@@ -4,7 +4,8 @@ import {
     FETCH_DATA_FAILURE,
     SEND_DATA_START,
     SEND_DATA_SUCCESS,
-    SEND_DATA_FAILURE
+    SEND_DATA_FAILURE,
+    DELETE_SMURF_SUCCESS
   } from "../actions";
 
 const initialState = {
@@ -53,6 +54,12 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isSending: false,
                 error: action.payload
+            }
+        case DELETE_SMURF_SUCCESS:
+            return {
+                ...state,
+                smurfs: action.payload,
+                error: ''
             }
         default:
             return state;
