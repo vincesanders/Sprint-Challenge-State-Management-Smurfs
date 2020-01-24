@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteSmurf } from '../actions';
 
 
 export default ({ smurf }) => {
     const remove = useDispatch();
+    const usedID = useSelector(state => state.lastAddedSmurfID);
     let [isEditting, setIsEditting] = useState(false);
     const [name, setName] = useState(smurf.name);
     const [age, setAge] = useState(smurf.age);

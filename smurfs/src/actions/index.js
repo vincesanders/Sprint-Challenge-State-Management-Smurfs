@@ -51,5 +51,7 @@ export const deleteSmurf = id => dispatch => {
 
 export const editSmurf = newSmurfInfo=> dispatch => {
     axios
-    .put(`http://localhost:3333/smurfs/${newSmurfInfo.id}`, {name: 'yo'})
+    .put(`http://localhost:3333/smurfs/${newSmurfInfo.id}`, newSmurfInfo)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
 }
