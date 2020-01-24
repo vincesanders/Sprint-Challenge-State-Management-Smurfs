@@ -8,7 +8,8 @@ const initialState = {
     smurfs: [],
     lastAddedSmurfID: 0,
     isLoading: false,
-    isSending: false
+    isSending: false,
+    error: ''
 }
 
 export const reducer = (state = initialState, action) => {
